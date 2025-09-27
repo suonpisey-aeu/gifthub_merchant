@@ -1,0 +1,85 @@
+name: gifthub_merchant
+description: GiftHub Cambodia - Merchant Portal App
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.17.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.0.5
+  
+  # UI Components
+  cupertino_icons: ^1.0.2
+  
+  # Network & HTTP
+  http: ^0.13.5
+  
+  # Image Handling
+  cached_network_image: ^3.2.3
+  
+  # QR Code Scanner (when implementing real scanner)
+  # qr_code_scanner: ^1.0.1
+  
+  # Local Storage
+  shared_preferences: ^2.0.17
+  
+  # Date/Time formatting
+  intl: ^0.17.0
+  
+  # Charts (for analytics)
+  fl_chart: ^0.60.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # Linting
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/icons/
+    
+  # An image asset can refer to one or more resolution-variant files in the
+  # asset bundle. The convention is to store resolution variants in the same
+  # directory as the original image file.
+  
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Medium.ttf
+          weight: 500
+        - asset: fonts/Roboto-Bold.ttf
+          weight: 700
+  
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
