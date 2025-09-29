@@ -6,7 +6,7 @@ import '../../utils/app_theme.dart';
 class TransactionsScreen extends StatelessWidget {
   final VoidCallback? onBack;
 
-  const TransactionsScreen({Key? key, this.onBack}) : super(key: key);
+  const TransactionsScreen({super.key, this.onBack});
 
   @override
   Widget build(BuildContext context) {
@@ -238,15 +238,15 @@ class TransactionsScreen extends StatelessWidget {
             _buildDetailRow('QR Code', transaction.qrCode),
             _buildDetailRow('Redeemed At', _formatDate(transaction.redeemedAt)),
             SizedBox(height: 20),
-            Container(
+            SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Close'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppTheme.primaryColor,
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
+                child: Text('Close'),
               ),
             ),
           ],

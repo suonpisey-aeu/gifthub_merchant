@@ -6,6 +6,8 @@ import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
 
 class MerchantRegisterScreen extends StatefulWidget {
+  const MerchantRegisterScreen({super.key});
+
   @override
   _MerchantRegisterScreenState createState() => _MerchantRegisterScreenState();
 }
@@ -134,7 +136,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                     border: Border.all(color: Colors.grey[300]!),
                   ),
                   child: DropdownButtonFormField<String>(
-                    value: _selectedCategory,
+                    initialValue: _selectedCategory,
                     decoration: InputDecoration(
                       labelText: 'Business Category',
                       prefixIcon: Icon(Icons.category),

@@ -39,7 +39,7 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                 children: [
                   SizedBox(height: isSmallScreen ? 20 : 40), 
                   
-                  // Logo and Title - More compact
+                  // Logo and Title Section
                   Container(
                     padding: EdgeInsets.all(16), 
                     decoration: BoxDecoration(
@@ -48,22 +48,22 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                     ),
                     child: Icon(
                       Icons.store,
-                      size: isSmallScreen ? 45 : 50, 
+                      size: isSmallScreen ? 50 : 55, 
                       color: AppTheme.primaryColor,
                     ),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'GiftHub Cambodia',
+                    'Gift Box',
                     style: TextStyle(
-                      fontSize: isSmallScreen ? 24 : 28,
+                      fontSize: isSmallScreen ? 26 : 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
                   SizedBox(height: 4), 
                   Text(
-                    'Merchant Portal',
+                    'Merchant App',
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.white70,
@@ -199,10 +199,10 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                     child: Column(
                       children: [
                         Text(
-                          'Need to grow your business? ',
+                          'Need to grow your business? Join us today!',
                           style: TextStyle(
                             color: Colors.white70,
-                            fontSize: 13, 
+                            fontSize: 15, 
                           ),
                         ),
                         SizedBox(height: 10), 

@@ -7,10 +7,10 @@ class VoucherCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const VoucherCard({
-    Key? key,
+    super.key,
     required this.voucher,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

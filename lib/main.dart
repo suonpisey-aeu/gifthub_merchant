@@ -12,6 +12,8 @@ void main() {
 }
 
 class GiftHubMerchantApp extends StatelessWidget {
+  const GiftHubMerchantApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -35,6 +37,8 @@ class GiftHubMerchantApp extends StatelessWidget {
 }
 
 class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<MerchantProvider>(

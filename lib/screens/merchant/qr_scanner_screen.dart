@@ -6,6 +6,8 @@ import '../../utils/app_theme.dart';
 import '../../widgets/custom_button.dart';
 
 class QRScannerScreen extends StatefulWidget {
+  const QRScannerScreen({super.key});
+
   @override
   _QRScannerScreenState createState() => _QRScannerScreenState();
 }
@@ -320,10 +322,10 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
               Navigator.pop(context);
               _processRedemption(qrCode);
             },
-            child: Text('Confirm'),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppTheme.primaryColor, // Updated from 'primary'
             ),
+            child: Text('Confirm'),
           ),
         ],
       ),

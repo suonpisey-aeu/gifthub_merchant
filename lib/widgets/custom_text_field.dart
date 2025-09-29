@@ -17,7 +17,7 @@ class CustomTextField extends StatefulWidget {
   final int? maxLength;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.label,
     this.hint,
@@ -31,7 +31,7 @@ class CustomTextField extends StatefulWidget {
     this.enabled = true,
     this.maxLines = 1,
     this.maxLength,
-  }) : super(key: key);
+  });
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();

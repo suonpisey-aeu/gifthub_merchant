@@ -7,7 +7,7 @@ import '../../widgets/custom_button.dart';
 class ProfileScreen extends StatelessWidget {
   final VoidCallback? onBack;
 
-  const ProfileScreen({Key? key, this.onBack}) : super(key: key);
+  const ProfileScreen({super.key, this.onBack});
 
   @override
   Widget build(BuildContext context) {

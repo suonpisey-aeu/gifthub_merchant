@@ -7,7 +7,7 @@ import '../../widgets/stat_card.dart';
 class AnalyticsScreen extends StatefulWidget {
   final VoidCallback? onBack;
 
-  const AnalyticsScreen({Key? key, this.onBack}) : super(key: key);
+  const AnalyticsScreen({super.key, this.onBack});
 
   @override
   _AnalyticsScreenState createState() => _AnalyticsScreenState();
@@ -80,7 +80,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                     ),
                     StatCard(
                       title: 'Redemptions',
-                      value: '${_calculateRedemptions(voucherProvider)}',
+                      value: _calculateRedemptions(voucherProvider),
                       icon: Icons.redeem,
                       color: AppTheme.secondaryColor,
                     ),

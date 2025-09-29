@@ -8,7 +8,7 @@ import '../../widgets/custom_button.dart';
 class VoucherManagementScreen extends StatefulWidget {
   final VoidCallback? onBack;
 
-  const VoucherManagementScreen({Key? key, this.onBack}) : super(key: key);
+  const VoucherManagementScreen({super.key, this.onBack});
 
   @override
   _VoucherManagementScreenState createState() => _VoucherManagementScreenState();
