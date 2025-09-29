@@ -38,6 +38,44 @@ class MerchantProvider with ChangeNotifier {
     }
   }
 
+  Future<bool> register({
+    required String businessName,
+    required String email,
+    required String phone,
+    required String address,
+    required String category,
+    required String password,
+  }) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      // Simulate API call for registration
+      await Future.delayed(Duration(seconds: 2));
+      
+      // Create new merchant account
+      _merchant = Merchant(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        businessName: businessName,
+        email: email,
+        phone: phone,
+        address: address,
+        category: category,
+        isActive: true,
+        commissionRate: 8.5, // Default commission rate
+        createdAt: DateTime.now(),
+      );
+      
+      _isLoading = false;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _isLoading = false;
+      notifyListeners();
+      return false;
+    }
+  }
+
   void logout() {
     _merchant = null;
     notifyListeners();

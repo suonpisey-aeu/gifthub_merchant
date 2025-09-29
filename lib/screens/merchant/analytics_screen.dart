@@ -1,6 +1,3 @@
-// =============================================================================
-// File: screens/merchant/analytics_screen.dart (UPDATED FOR FLUTTER 3.x)
-// =============================================================================
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/voucher_provider.dart';
@@ -8,6 +5,10 @@ import '../../utils/app_theme.dart';
 import '../../widgets/stat_card.dart';
 
 class AnalyticsScreen extends StatefulWidget {
+  final VoidCallback? onBack;
+
+  const AnalyticsScreen({Key? key, this.onBack}) : super(key: key);
+
   @override
   _AnalyticsScreenState createState() => _AnalyticsScreenState();
 }
@@ -19,6 +20,10 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: widget.onBack ?? () => Navigator.of(context).pop(),
+        ),
         title: Text('Analytics'),
         actions: [
           PopupMenuButton<String>(
@@ -55,7 +60,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 // Key Metrics
                 Text(
                   'Key Metrics',
-                  style: Theme.of(context).textTheme.headlineSmall, // Updated from headline3
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(height: 16),
                 
@@ -99,7 +104,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 // Performance Chart Placeholder
                 Text(
                   'Performance Overview',
-                  style: Theme.of(context).textTheme.headlineSmall, // Updated from headline3
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(height: 16),
                 
@@ -147,7 +152,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 // Top Performing Vouchers
                 Text(
                   'Top Performing Vouchers',
-                  style: Theme.of(context).textTheme.headlineSmall, // Updated from headline3
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(height: 16),
                 
@@ -225,7 +230,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   }
 
   String _calculateRevenue(VoucherProvider provider) {
-    final total = provider.transactions.fold<double>(0.0, (sum, t) => sum + t.amount); // Fixed type
+    final total = provider.transactions.fold<double>(0.0, (sum, t) => sum + t.amount);
     return total.toStringAsFixed(2);
   }
 
@@ -234,8 +239,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   }
 
   String _calculateConversionRate(VoucherProvider provider) {
-    final totalVouchers = provider.vouchers.fold<int>(0, (sum, v) => sum + v.maxRedemptions); // Fixed type
-    final totalRedemptions = provider.vouchers.fold<int>(0, (sum, v) => sum + v.currentRedemptions); // Fixed type
+    final totalVouchers = provider.vouchers.fold<int>(0, (sum, v) => sum + v.maxRedemptions);
+    final totalRedemptions = provider.vouchers.fold<int>(0, (sum, v) => sum + v.currentRedemptions);
     
     if (totalVouchers == 0) return '0';
     
@@ -246,7 +251,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   String _calculateAverageOrderValue(VoucherProvider provider) {
     if (provider.transactions.isEmpty) return '0.00';
     
-    final total = provider.transactions.fold<double>(0.0, (sum, t) => sum + t.amount); // Fixed type
+    final total = provider.transactions.fold<double>(0.0, (sum, t) => sum + t.amount);
     final average = total / provider.transactions.length;
     return average.toStringAsFixed(2);
   }

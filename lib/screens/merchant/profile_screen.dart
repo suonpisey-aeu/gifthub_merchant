@@ -5,16 +5,23 @@ import '../../utils/app_theme.dart';
 import '../../widgets/custom_button.dart';
 
 class ProfileScreen extends StatelessWidget {
+  final VoidCallback? onBack;
+
+  const ProfileScreen({Key? key, this.onBack}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: onBack ?? () => Navigator.of(context).pop(),
+        ),
         title: Text('Profile'),
         actions: [
           IconButton(
             icon: Icon(Icons.edit),
             onPressed: () {
-              // Navigate to edit profile
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Edit profile functionality coming soon!')),
               );

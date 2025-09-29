@@ -1,6 +1,3 @@
-// =============================================================================
-// File: screens/merchant/voucher_management_screen.dart (UPDATED FOR FLUTTER 3.x)
-// =============================================================================
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/voucher_provider.dart';
@@ -9,6 +6,10 @@ import '../../widgets/voucher_card.dart';
 import '../../widgets/custom_button.dart';
 
 class VoucherManagementScreen extends StatefulWidget {
+  final VoidCallback? onBack;
+
+  const VoucherManagementScreen({Key? key, this.onBack}) : super(key: key);
+
   @override
   _VoucherManagementScreenState createState() => _VoucherManagementScreenState();
 }
@@ -20,6 +21,10 @@ class _VoucherManagementScreenState extends State<VoucherManagementScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: widget.onBack ?? () => Navigator.of(context).pop(),
+        ),
         title: Text('Voucher Management'),
         actions: [
           IconButton(
@@ -74,7 +79,7 @@ class _VoucherManagementScreenState extends State<VoucherManagementScreen> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Create your first voucher to get started',
+                          'Create your voucher to get started',
                           style: TextStyle(color: Colors.grey[500]),
                         ),
                         SizedBox(height: 24),
@@ -153,7 +158,7 @@ class _VoucherManagementScreenState extends State<VoucherManagementScreen> {
           children: [
             Text(
               'Filter Options',
-              style: Theme.of(context).textTheme.headlineSmall, // Updated from headline3
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             SizedBox(height: 16),
             ListTile(
@@ -199,14 +204,12 @@ class _VoucherManagementScreenState extends State<VoucherManagementScreen> {
   }
 
   void _createNewVoucher() {
-    // Navigate to create voucher screen
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Create voucher functionality coming soon!')),
     );
   }
 
   void _editVoucher(String voucherId) {
-    // Navigate to edit voucher screen
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Edit voucher functionality coming soon!')),
     );

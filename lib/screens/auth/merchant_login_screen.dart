@@ -1,12 +1,10 @@
-// =============================================================================
-// File: screens/auth/merchant_login_screen.dart (UPDATED FOR FLUTTER 3.x)
-// =============================================================================
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/merchant_provider.dart';
 import '../../utils/app_theme.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
+import 'merchant_register_screen.dart';
 
 class MerchantLoginScreen extends StatefulWidget {
   @override
@@ -80,7 +78,7 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                     children: [
                       Text(
                         'Welcome Back',
-                        style: Theme.of(context).textTheme.headlineMedium, // Updated from headline2
+                        style: Theme.of(context).textTheme.headlineMedium,
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 32),
@@ -149,6 +147,9 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                       TextButton(
                         onPressed: () {
                           // Navigate to forgot password
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Forgot password functionality coming soon!')),
+                          );
                         },
                         child: Text(
                           'Forgot Password?',
@@ -160,7 +161,47 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                 ),
               ),
               
-              SizedBox(height: 40),
+              SizedBox(height: 32),
+              
+              // Register Section
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: Colors.white.withOpacity(0.3)),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Want to grow your business with GiftHub? Join us today!',
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    CustomButton(
+                      text: 'Register Your Business',
+                      icon: Icons.business,
+                      isOutlined: true,
+                      color: Colors.white,
+                      textColor: Colors.white,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MerchantRegisterScreen(),
+                          ),
+                        );
+                      },
+                      width: double.infinity,
+                    ),
+                  ],
+                ),
+              ),
+              
+              SizedBox(height: 24),
               Text(
                 'Need help? Contact support',
                 style: TextStyle(color: Colors.white70),

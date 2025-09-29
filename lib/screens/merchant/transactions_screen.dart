@@ -1,22 +1,26 @@
-// =============================================================================
-// File: screens/merchant/transactions_screen.dart (UPDATED FOR FLUTTER 3.x)
-// =============================================================================
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/voucher_provider.dart';
 import '../../utils/app_theme.dart';
 
 class TransactionsScreen extends StatelessWidget {
+  final VoidCallback? onBack;
+
+  const TransactionsScreen({Key? key, this.onBack}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: onBack ?? () => Navigator.of(context).pop(),
+        ),
         title: Text('Transactions'),
         actions: [
           IconButton(
             icon: Icon(Icons.download),
             onPressed: () {
-              // Export functionality
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Export functionality coming soon!')),
               );
@@ -82,7 +86,7 @@ class TransactionsScreen extends StatelessWidget {
                             style: TextStyle(color: Colors.white70, fontSize: 14),
                           ),
                           Text(
-                            '\$${transactions.fold<double>(0.0, (sum, t) => sum + t.amount).toStringAsFixed(2)}', // Fixed type
+                            '\$${transactions.fold<double>(0.0, (sum, t) => sum + t.amount).toStringAsFixed(2)}',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 24,
@@ -240,7 +244,7 @@ class TransactionsScreen extends StatelessWidget {
                 onPressed: () => Navigator.pop(context),
                 child: Text('Close'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.primaryColor, // Updated from 'primary'
+                  backgroundColor: AppTheme.primaryColor,
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
               ),

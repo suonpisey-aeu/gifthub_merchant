@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/auth/merchant_login_screen.dart';
+import 'screens/auth/merchant_register_screen.dart';
 import 'screens/merchant/merchant_dashboard_screen.dart';
 import 'providers/merchant_provider.dart';
 import 'providers/voucher_provider.dart';
@@ -25,6 +26,7 @@ class GiftHubMerchantApp extends StatelessWidget {
         home: AuthWrapper(),
         routes: {
           '/login': (context) => MerchantLoginScreen(),
+          '/register': (context) => MerchantRegisterScreen(),
           '/dashboard': (context) => MerchantDashboardScreen(),
         },
       ),

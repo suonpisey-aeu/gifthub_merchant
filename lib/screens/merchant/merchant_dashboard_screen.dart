@@ -1,6 +1,3 @@
-// =============================================================================
-// File: screens/merchant/merchant_dashboard_screen.dart (UPDATED FOR FLUTTER 3.x)
-// =============================================================================
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/merchant_provider.dart';
@@ -36,6 +33,12 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
     });
   }
 
+  void _navigateBack() {
+    setState(() {
+      _currentIndex = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final merchant = Provider.of<MerchantProvider>(context).merchant;
@@ -47,6 +50,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
+        automaticallyImplyLeading: false, // Remove back button on dashboard
         actions: [
           IconButton(
             icon: Icon(Icons.qr_code_scanner),
@@ -120,7 +124,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
               // Quick Stats
               Text(
                 'Overview',
-                style: Theme.of(context).textTheme.headlineSmall, // Updated from headline3
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               SizedBox(height: 16),
               
@@ -164,7 +168,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
               // Quick Actions
               Text(
                 'Quick Actions',
-                style: Theme.of(context).textTheme.headlineSmall, // Updated from headline3
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               SizedBox(height: 16),
               
@@ -207,7 +211,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                 children: [
                   Text(
                     'Recent Vouchers',
-                    style: Theme.of(context).textTheme.headlineSmall, // Updated from headline3
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   TextButton(
                     onPressed: () {
@@ -311,13 +315,13 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
   Widget _getScreenForIndex(int index) {
     switch (index) {
       case 1:
-        return VoucherManagementScreen();
+        return VoucherManagementScreen(onBack: _navigateBack);
       case 2:
-        return TransactionsScreen();
+        return TransactionsScreen(onBack: _navigateBack);
       case 3:
-        return AnalyticsScreen();
+        return AnalyticsScreen(onBack: _navigateBack);
       case 4:
-        return ProfileScreen();
+        return ProfileScreen(onBack: _navigateBack);
       default:
         return Container();
     }
