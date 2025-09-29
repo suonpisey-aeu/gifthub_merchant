@@ -199,7 +199,7 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                     child: Column(
                       children: [
                         Text(
-                          'Don\'t have an account?',
+                          'Need to grow your business? ',
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 13, 
