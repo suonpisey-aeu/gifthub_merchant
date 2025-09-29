@@ -49,7 +49,7 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                 ),
               ),
               Text(
-                'Merchant Portal',
+                'Merchant',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white70,

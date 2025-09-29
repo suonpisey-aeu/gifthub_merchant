@@ -21,7 +21,7 @@ class StatCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(12), 
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -35,12 +35,13 @@ class StatCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween, 
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(6), 
                   decoration: BoxDecoration(
                     color: color.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(8),
@@ -48,34 +49,37 @@ class StatCard extends StatelessWidget {
                   child: Icon(
                     icon,
                     color: color,
-                    size: 20,
+                    size: 18, // ✅ Reduced from 20
                   ),
                 ),
                 if (onTap != null)
                   Icon(
                     Icons.arrow_forward_ios,
-                    size: 16,
+                    size: 14, 
                     color: Colors.grey[400],
                   ),
               ],
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 8), 
             Text(
               value,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20, 
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),
+              overflow: TextOverflow.ellipsis, 
             ),
-            SizedBox(height: 4),
+            SizedBox(height: 2), 
             Text(
               title,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 11, 
                 color: Colors.grey[600],
                 fontWeight: FontWeight.w500,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis, 
             ),
           ],
         ),

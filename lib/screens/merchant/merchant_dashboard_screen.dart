@@ -50,7 +50,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
-        automaticallyImplyLeading: false, // Remove back button on dashboard
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: Icon(Icons.qr_code_scanner),
@@ -74,13 +74,13 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
           _loadDashboardStats();
         },
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(12), // ✅ Reduced from 16
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Welcome Section
+              // Welcome Section - More compact
               Container(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(16), // ✅ Reduced from 20
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [AppTheme.primaryColor, AppTheme.secondaryColor],
@@ -94,24 +94,27 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                   children: [
                     Text(
                       'Welcome back,',
-                      style: TextStyle(color: Colors.white70, fontSize: 16),
+                      style: TextStyle(color: Colors.white70, fontSize: 14), // ✅ Reduced font
                     ),
                     Text(
                       merchant?.businessName ?? 'Business',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 20, // ✅ Reduced from 24
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 16),
+                    SizedBox(height: 12), // ✅ Reduced from 16
                     Row(
                       children: [
-                        Icon(Icons.location_on, color: Colors.white70, size: 16),
+                        Icon(Icons.location_on, color: Colors.white70, size: 14), // ✅ Smaller icon
                         SizedBox(width: 4),
-                        Text(
-                          merchant?.address ?? 'Cambodia',
-                          style: TextStyle(color: Colors.white70),
+                        Expanded(
+                          child: Text(
+                            merchant?.address ?? 'Cambodia',
+                            style: TextStyle(color: Colors.white70, fontSize: 13), // ✅ Smaller font
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ],
                     ),
@@ -119,22 +122,25 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                 ),
               ),
               
-              SizedBox(height: 24),
+              SizedBox(height: 16), // ✅ Reduced from 24
               
               // Quick Stats
               Text(
                 'Overview',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontSize: 18, // ✅ Smaller font
+                ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 12), // ✅ Reduced from 16
               
+              // Stats Grid - More compact
               GridView.count(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 1.5,
+                mainAxisSpacing: 12, // ✅ Reduced from 16
+                crossAxisSpacing: 12, // ✅ Reduced from 16
+                childAspectRatio: 1.6, // ✅ Adjusted ratio for better fit
                 children: [
                   StatCard(
                     title: 'Total Vouchers',
@@ -163,14 +169,16 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                 ],
               ),
               
-              SizedBox(height: 32),
+              SizedBox(height: 20), // ✅ Reduced from 32
               
               // Quick Actions
               Text(
                 'Quick Actions',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontSize: 18,
+                ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 12),
               
               Row(
                 children: [
@@ -186,7 +194,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                       },
                     ),
                   ),
-                  SizedBox(width: 16),
+                  SizedBox(width: 12), // ✅ Reduced from 16
                   Expanded(
                     child: _buildQuickActionCard(
                       'Scan QR',
@@ -203,7 +211,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                 ],
               ),
               
-              SizedBox(height: 32),
+              SizedBox(height: 20), // ✅ Reduced from 32
               
               // Recent Vouchers
               Row(
@@ -211,7 +219,9 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                 children: [
                   Text(
                     'Recent Vouchers',
-                    style: Theme.of(context).textTheme.headlineSmall,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontSize: 18,
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
@@ -223,7 +233,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 12), // ✅ Reduced from 16
               
               Consumer<VoucherProvider>(
                 builder: (context, voucherProvider, child) {
@@ -231,26 +241,29 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                   
                   if (recentVouchers.isEmpty) {
                     return Container(
-                      padding: EdgeInsets.all(40),
+                      padding: EdgeInsets.all(32), // ✅ Reduced from 40
                       child: Column(
                         children: [
                           Icon(
                             Icons.local_offer_outlined,
-                            size: 64,
+                            size: 56, // ✅ Reduced from 64
                             color: Colors.grey[400],
                           ),
-                          SizedBox(height: 16),
+                          SizedBox(height: 12), // ✅ Reduced from 16
                           Text(
                             'No vouchers yet',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16, // ✅ Reduced from 18
                               color: Colors.grey[600],
                             ),
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 6), // ✅ Reduced from 8
                           Text(
                             'Create your first voucher to get started',
-                            style: TextStyle(color: Colors.grey[500]),
+                            style: TextStyle(
+                              color: Colors.grey[500],
+                              fontSize: 13, // ✅ Smaller font
+                            ),
                           ),
                         ],
                       ),
@@ -260,7 +273,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                   return Column(
                     children: recentVouchers.map((voucher) {
                       return Padding(
-                        padding: EdgeInsets.only(bottom: 16),
+                        padding: EdgeInsets.only(bottom: 12), // ✅ Reduced from 16
                         child: VoucherCard(
                           voucher: voucher,
                           onTap: () {
@@ -272,6 +285,8 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                   );
                 },
               ),
+              
+              SizedBox(height: 16), // ✅ Bottom padding for safer scroll
             ],
           ),
         ),
@@ -331,7 +346,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(16), // ✅ Reduced from 20
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -346,7 +361,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(12),
+              padding: EdgeInsets.all(10), // ✅ Reduced from 12
               decoration: BoxDecoration(
                 color: color.withOpacity(0.1),
                 shape: BoxShape.circle,
@@ -354,15 +369,15 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
               child: Icon(
                 icon,
                 color: color,
-                size: 24,
+                size: 22, // ✅ Reduced from 24
               ),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 10), // ✅ Reduced from 12
             Text(
               title,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontSize: 13, // ✅ Reduced from 14
               ),
               textAlign: TextAlign.center,
             ),

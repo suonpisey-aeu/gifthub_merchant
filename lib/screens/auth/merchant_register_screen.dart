@@ -1,6 +1,3 @@
-// =============================================================================
-// File: screens/auth/merchant_register_screen.dart
-// =============================================================================
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/merchant_provider.dart';
@@ -42,6 +39,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
+      resizeToAvoidBottomInset: true, // ✅ Handle keyboard properly
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -56,15 +54,15 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.fromLTRB(20, 8, 20, 20), // ✅ Reduced top padding
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Header
+                // Header - More compact
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(16), // ✅ Reduced padding
                   decoration: BoxDecoration(
                     color: AppTheme.primaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(16),
@@ -73,14 +71,14 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                     children: [
                       Icon(
                         Icons.store,
-                        size: 60,
+                        size: 50, // ✅ Smaller icon
                         color: AppTheme.primaryColor,
                       ),
-                      SizedBox(height: 12),
+                      SizedBox(height: 8), // ✅ Reduced spacing
                       Text(
                         'Join GiftHub Cambodia',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 22, // ✅ Smaller font
                           fontWeight: FontWeight.bold,
                           color: AppTheme.primaryColor,
                         ),
@@ -89,7 +87,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                       Text(
                         'Start selling vouchers to thousands of customers',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 13, // ✅ Smaller font
                           color: AppTheme.textSecondary,
                         ),
                         textAlign: TextAlign.center,
@@ -98,18 +96,18 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                   ),
                 ),
                 
-                SizedBox(height: 32),
+                SizedBox(height: 20), // ✅ Reduced spacing
                 
                 // Business Information Section
                 Text(
                   'Business Information',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16, // ✅ Smaller font
                     fontWeight: FontWeight.bold,
                     color: AppTheme.textPrimary,
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12), // ✅ Reduced spacing
                 
                 CustomTextField(
                   controller: _businessNameController,
@@ -126,7 +124,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12), // ✅ Reduced spacing
                 
                 // Category Dropdown
                 Container(
@@ -141,7 +139,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                       labelText: 'Business Category',
                       prefixIcon: Icon(Icons.category),
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12), // ✅ Reduced padding
                     ),
                     items: _categories.map((String category) {
                       return DropdownMenuItem<String>(
@@ -156,7 +154,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                     },
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 
                 CustomTextField(
                   controller: _phoneController,
@@ -174,7 +172,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 
                 CustomTextField(
                   controller: _addressController,
@@ -190,18 +188,18 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                   },
                 ),
                 
-                SizedBox(height: 32),
+                SizedBox(height: 20), // ✅ Reduced spacing
                 
                 // Account Information Section
                 Text(
                   'Account Information',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: AppTheme.textPrimary,
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 
                 CustomTextField(
                   controller: _emailController,
@@ -219,7 +217,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 
                 CustomTextField(
                   controller: _passwordController,
@@ -237,7 +235,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 
                 CustomTextField(
                   controller: _confirmPasswordController,
@@ -256,11 +254,11 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                   },
                 ),
                 
-                SizedBox(height: 24),
+                SizedBox(height: 16), // ✅ Reduced spacing
                 
-                // Terms and Conditions
+                // Terms and Conditions - More compact
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: EdgeInsets.all(12), // ✅ Reduced padding
                   decoration: BoxDecoration(
                     color: Colors.grey[50],
                     borderRadius: BorderRadius.circular(8),
@@ -271,15 +269,21 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                   ),
                   child: Row(
                     children: [
-                      Checkbox(
-                        value: _acceptedTerms,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            _acceptedTerms = value ?? false;
-                          });
-                        },
-                        activeColor: AppTheme.primaryColor,
+                      SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: Checkbox(
+                          value: _acceptedTerms,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              _acceptedTerms = value ?? false;
+                            });
+                          },
+                          activeColor: AppTheme.primaryColor,
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
                       ),
+                      SizedBox(width: 8),
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
@@ -290,7 +294,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                           child: RichText(
                             text: TextSpan(
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 13, // ✅ Smaller font
                                 color: AppTheme.textPrimary,
                               ),
                               children: [
@@ -321,7 +325,7 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                   ),
                 ),
                 
-                SizedBox(height: 32),
+                SizedBox(height: 20), // ✅ Reduced spacing
                 
                 // Register Button
                 Consumer<MerchantProvider>(
@@ -330,6 +334,9 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                       text: 'Create Account',
                       isLoading: merchantProvider.isLoading,
                       onPressed: () async {
+                        // Dismiss keyboard
+                        FocusScope.of(context).unfocus();
+                        
                         if (!_acceptedTerms) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -379,32 +386,41 @@ class _MerchantRegisterScreenState extends State<MerchantRegisterScreen> {
                   },
                 ),
                 
-                SizedBox(height: 16),
+                SizedBox(height: 12), // ✅ Reduced spacing
                 
-                // Already have account
+                // Already have account - More compact
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'Already have an account? ',
-                      style: TextStyle(color: AppTheme.textSecondary),
+                      style: TextStyle(
+                        color: AppTheme.textSecondary,
+                        fontSize: 13, // ✅ Smaller font
+                      ),
                     ),
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        minimumSize: Size(0, 0),
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
                       child: Text(
                         'Sign In',
                         style: TextStyle(
                           color: AppTheme.primaryColor,
                           fontWeight: FontWeight.w600,
+                          fontSize: 13,
                         ),
                       ),
                     ),
                   ],
                 ),
                 
-                SizedBox(height: 24),
+                SizedBox(height: 16), // ✅ Bottom padding for keyboard
               ],
             ),
           ),
