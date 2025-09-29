@@ -202,8 +202,10 @@ class _MerchantLoginScreenState extends State<MerchantLoginScreen> {
                           'Need to grow your business? Join us today!',
                           style: TextStyle(
                             color: Colors.white70,
-                            fontSize: 15, 
+                            fontSize: 14, 
+                            
                           ),
+                          textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 10), 
                         CustomButton(
