@@ -4,6 +4,7 @@ import '../../providers/voucher_provider.dart';
 import '../../utils/app_theme.dart';
 import '../../widgets/voucher_card.dart';
 import '../../widgets/custom_button.dart';
+import 'create_voucher_screen.dart'; // NEW IMPORT
 
 class VoucherManagementScreen extends StatefulWidget {
   final VoidCallback? onBack;
@@ -204,8 +205,10 @@ class _VoucherManagementScreenState extends State<VoucherManagementScreen> {
   }
 
   void _createNewVoucher() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Create voucher functionality coming soon!')),
+    // UPDATED: Navigate to CreateVoucherScreen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CreateVoucherScreen()),
     );
   }
 

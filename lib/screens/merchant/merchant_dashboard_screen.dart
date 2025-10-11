@@ -10,6 +10,7 @@ import 'transactions_screen.dart';
 import 'analytics_screen.dart';
 import 'profile_screen.dart';
 import 'qr_scanner_screen.dart';
+import 'create_voucher_screen.dart'; // NEW IMPORT
 
 class MerchantDashboardScreen extends StatefulWidget {
   const MerchantDashboardScreen({super.key});
@@ -190,9 +191,11 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                       Icons.add,
                       AppTheme.primaryColor,
                       () {
-                        setState(() {
-                          _currentIndex = 1;
-                        });
+                        // UPDATED: Navigate to CreateVoucherScreen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CreateVoucherScreen()),
+                        );
                       },
                     ),
                   ),
