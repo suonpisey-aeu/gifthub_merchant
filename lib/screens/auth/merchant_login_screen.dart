@@ -7,6 +7,8 @@ import '../../widgets/custom_text_field.dart';
 import 'merchant_register_screen.dart';
 
 class MerchantLoginScreen extends StatefulWidget {
+  const MerchantLoginScreen({super.key});
+
   @override
   _MerchantLoginScreenState createState() => _MerchantLoginScreenState();
 }

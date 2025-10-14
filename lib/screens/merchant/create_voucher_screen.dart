@@ -29,7 +29,7 @@ class _CreateVoucherScreenState extends State<CreateVoucherScreen> {
   
   // State
   String _selectedCategory = 'Food & Beverage';
-  List<String> _terms = [];
+  final List<String> _terms = [];
   bool _isLoading = false;
   
   final List<String> _categories = [

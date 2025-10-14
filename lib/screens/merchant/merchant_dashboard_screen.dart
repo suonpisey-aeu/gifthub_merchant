@@ -351,7 +351,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16), 
+        padding: EdgeInsets.all(12), 
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -364,9 +364,11 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
           ],
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.all(10), 
+              padding: EdgeInsets.all(8), 
               decoration: BoxDecoration(
                 color: color.withOpacity(0.1),
                 shape: BoxShape.circle,
@@ -374,17 +376,19 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
               child: Icon(
                 icon,
                 color: color,
-                size: 22, 
+                size: 20, 
               ),
             ),
-            SizedBox(height: 10), 
+            SizedBox(height: 8), 
             Text(
               title,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 13, 
+                fontSize: 12, 
               ),
               textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
